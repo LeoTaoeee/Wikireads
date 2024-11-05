@@ -14,10 +14,25 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     () => localStorage.getItem('isAuthenticated') === 'true'
   );
 
-  const login = (username: string, password: string) => {
-    if (username && password) {
-      setIsAuthenticated(true);
-      localStorage.setItem('isAuthenticated', 'true');
+  const login = async (username: string, password: string) => {
+    try {
+      const response = await fetch('/api/v1/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      if (data.qualified) {
+        setIsAuthenticated(true);
+        localStorage.setItem('isAuthenticated', 'true');
+      } else {
+        alert('Login failed: You are not qualified.');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
     }
   };
 
