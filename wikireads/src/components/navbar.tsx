@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 const Navbar: React.FC = () => {
@@ -7,8 +8,11 @@ const Navbar: React.FC = () => {
   return (
     <nav style={styles.navbar}>
       <ul style={styles.navList}>
-        <li><a href="" style={styles.navLink}>Home</a></li>
-        <li><a href="profile" style={styles.navLink}>Profile</a></li>
+        <li><Link to="/" style={styles.navLink}>Home</Link></li>
+        <li><Link to="/profile" style={styles.navLink}>Profile</Link></li>
+        <li><Link to="/friends" style={styles.navLink}>Friends</Link></li>
+        <li><Link to="/favorites" style={styles.navLink}>Favorites</Link></li>
+        <li><Link to="/settings" style={styles.navLink}>Settings</Link></li>
         <li><button onClick={logout} style={styles.logoutButton}>Logout</button></li>
       </ul>
     </nav>
