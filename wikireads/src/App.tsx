@@ -1,19 +1,16 @@
 import React from 'react';
 import { useAuth } from './components/AuthContext';
+
 import Login from './components/login';
 import Register from './components/register';
+import Home from './components/home';
 
 const App: React.FC = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className="App">
-      {isAuthenticated ? (
-        <>
-          <h1>Welcome!</h1>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
+      {isAuthenticated ? <Home /> : (
         <>
           <Register />
           <Login />

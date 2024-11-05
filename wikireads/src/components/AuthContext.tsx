@@ -9,10 +9,12 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Check `localStorage` for authentication status when the app loads
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
+    () => localStorage.getItem('isAuthenticated') === 'true'
+  );
 
   const login = (username: string, password: string) => {
-    // Replace this with an API call to validate login credentials.
     if (username && password) {
       setIsAuthenticated(true);
       localStorage.setItem('isAuthenticated', 'true');
