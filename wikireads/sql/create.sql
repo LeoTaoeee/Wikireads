@@ -11,6 +11,7 @@ CREATE TABLE Articles (
     avg_rating REAL CHECK(avg_rating BETWEEN 0 AND 5), 
     genre TEXT,
     article_desc TEXT CHECK(length(article_desc) <= 500) 
+);
 
 
 CREATE TABLE Reads (
