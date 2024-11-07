@@ -1,3 +1,4 @@
+
 from flask import jsonify
 from .auth import login_handler
 
@@ -9,7 +10,7 @@ class ApiV1:
         """Initializate class."""
 
         app.add_url_rule('/api/v1/login', 'login_hgandler',
-                         login_handler, methods=['GET'])
+                         login_handler, methods=['POST'])
        
 
     def get_base_url(self):
