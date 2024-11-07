@@ -9,7 +9,7 @@ class ApiV1:
     def __init__(self, app):
         """Initializate class."""
 
-        app.add_url_rule('/api/v1/login', 'login_hgandler',
+        app.add_url_rule('/api/v1/login', 'login_handler',
                          login_handler, methods=['POST'])
        
 

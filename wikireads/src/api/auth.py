@@ -11,7 +11,7 @@ import src.model as model
 app = flask.Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling
 
-@app.route('/api/v1/login', methods=['POST'])
+
 def login_handler():
     username = flask.request.json.get('username')
     password = flask.request.json.get('password')
