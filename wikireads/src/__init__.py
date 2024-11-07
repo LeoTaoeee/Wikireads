@@ -1,9 +1,12 @@
 """WikiReads package initializer."""
 import flask
+from flask_cors import CORS
 import src.config as config
 
 # Create the Flask app
 app = flask.Flask(__name__)
+
+CORS(app, supports_credentials=True)
 
 # Load the configuration from config.py
 app.config.from_object(config)
