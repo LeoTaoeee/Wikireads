@@ -16,4 +16,4 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB limit
 
 # Database file location
-DATABASE_FILENAME = WIKIREADS_ROOT / 'var' / 'wikireads.sqlite3'
+DATABASE_FILENAME = WIKIREADS_ROOT / 'src' / 'var' / 'wikireads.sqlite3'
