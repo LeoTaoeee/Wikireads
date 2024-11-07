@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAuth } from './components/AuthContext';
 import Home from './components/home';
 import Register from './components/register';
-import Login from './components/login';
+import Login from './components/Login';
 import Profile from './components/profile';
 
 const App: React.FC = () => {
