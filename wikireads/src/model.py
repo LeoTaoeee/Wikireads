@@ -1,7 +1,7 @@
 """WikiReads model (database) API."""
 import sqlite3
 import flask
-import wikireads  # Replace `insta485` with `wikireads` here
+import src  
 
 def dict_factory(cursor, row):
     """Convert database row objects to a dictionary keyed on column name."""
@@ -10,13 +10,13 @@ def dict_factory(cursor, row):
 def get_db():
     """Open a new database connection."""
     if 'sqlite_db' not in flask.g:
-        db_filename = wikireads.app.config['DATABASE_FILENAME']
+        db_filename = src.app.config['DATABASE_FILENAME']
         flask.g.sqlite_db = sqlite3.connect(str(db_filename))
         flask.g.sqlite_db.row_factory = dict_factory
         flask.g.sqlite_db.execute("PRAGMA foreign_keys = ON")
     return flask.g.sqlite_db
 
-@wikireads.app.teardown_appcontext
+@src.app.teardown_appcontext
 def close_db(error):
     """Close the database at the end of a request."""
     sqlite_db = flask.g.pop('sqlite_db', None)

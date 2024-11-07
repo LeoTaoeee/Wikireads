@@ -19,4 +19,4 @@ import src.api.auth  # noqa: E402  pylint: disable=wrong-import-position
 # Register blueprints or routes if needed (e.g., for modularity)
 # If your API uses Flask Blueprints, make sure to register them here
 # app.register_blueprint(src.api.api_v1.bp)
-api_v1 = src.api.api_v1(app)
+api_v1 = src.api.api_v1.ApiV1(app)
