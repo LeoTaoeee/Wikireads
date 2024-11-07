@@ -23,6 +23,6 @@ def login_handler():
     
     if user is not None:
         flask.session['username'] = username  # Set session variable
-        return flask.jsonify({'status': 'success', 'message': 'User logged in'}), 200
+        return flask.jsonify({'qualified': True, 'message': 'User logged in'}), 200
     else:
-        return flask.jsonify({'status': 'failure', 'message': 'Invalid credentials'}), 401
+        return flask.jsonify({'qualified': False, 'message': 'Invalid credentials'}), 401
