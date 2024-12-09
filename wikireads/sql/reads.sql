@@ -1,0 +1,15 @@
+INSERT INTO Reads (uniqname, article_id, percent_completion) VALUES
+('joanofarc', 1, 23.5),
+('joanofarc', 2, 78.3),
+('joanofarc', 3, 45.9),
+('joanofarc', 4, 62.1),
+('joanofarc', 5, 89.4),
+('joanofarc', 6, 33.7),
+('joanofarc', 7, 98.0),
+('joanofarc', 8, 100.0),
+('joanofarc', 9, 100.0),
+('joanofarc', 10, 100.0),
+('joanofarc', 11, 100.0),
+('joanofarc', 12, 100.0),
+('joanofarc', 13, 100.0),
+('joanofarc', 14, 100.0);
