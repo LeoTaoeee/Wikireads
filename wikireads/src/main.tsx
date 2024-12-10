@@ -1,9 +1,15 @@
+// src/index.tsx
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { AuthProvider } from './components/AuthContext';
+import './index.css'; // Optional: Include if you have global styles
+import { AuthProvider } from './context/AuthContext'; // Adjust the path as necessary
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
   <React.StrictMode>
     <AuthProvider>
       <App />

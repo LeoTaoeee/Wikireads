@@ -1,46 +1,75 @@
+// src/components/Navbar.tsx
+
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../context/AuthContext'; // Import the custom hook
+
+const Nav = styled.nav`
+  background-color: #34495e;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Logo = styled.div`
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+const NavLinks = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+
+  &:hover {
+    color: #ecf0f1;
+  }
+`;
+
+const LogoutButton = styled.button`
+  padding: 0.3rem 0.6rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c0392b;
+  }
+`;
 
 const Navbar: React.FC = () => {
-  const { logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = () => {
+    console.log('Logout clicked'); // Debug log
+    logout();
+  };
 
   return (
-    <nav style={styles.navbar}>
-      <ul style={styles.navList}>
-        <li><Link to="/" style={styles.navLink}>Home</Link></li>
-        <li><Link to="/profile" style={styles.navLink}>Profile</Link></li>
-        <li><Link to="/friends" style={styles.navLink}>Friends</Link></li>
-        <li><Link to="/favorites" style={styles.navLink}>Favorites</Link></li>
-        <li><Link to="/settings" style={styles.navLink}>Settings</Link></li>
-        <li><button onClick={logout} style={styles.logoutButton}>Logout</button></li>
-      </ul>
-    </nav>
+    <Nav>
+      <Logo>Wikireads</Logo>
+      <NavLinks>
+        {isAuthenticated ? (
+          <>
+            <StyledLink to="/">Home</StyledLink>
+            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+          </>
+        ) : (
+          <StyledLink to="/login">Login</StyledLink>
+        )}
+      </NavLinks>
+    </Nav>
   );
-};
-
-const styles = {
-  navbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '1rem',
-    backgroundColor: '#333',
-  },
-  navList: {
-    listStyleType: 'none',
-    display: 'flex',
-    gap: '1rem',
-  },
-  navLink: {
-    color: 'white',
-    textDecoration: 'none', // No underline
-  },
-  logoutButton: {
-    background: 'none',
-    color: 'white',
-    border: 'none',
-    cursor: 'pointer',
-  },
 };
 
 export default Navbar;
